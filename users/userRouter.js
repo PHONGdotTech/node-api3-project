@@ -75,8 +75,6 @@ router.get('/:id/posts', (req, res) => {
   .catch(err => {
     res.status(500).json({message: "There was an error getting the user from the server."})
   })
-
-  
 });
 
 router.delete('/:id', (req, res) => {
@@ -97,8 +95,6 @@ router.delete('/:id', (req, res) => {
   .catch(err => {
     res.status(500).json({message: "There was an error getting the user from the server."})
   })
-
-  
 });
 
 router.put('/:id', (req, res) => {
@@ -119,8 +115,6 @@ router.put('/:id', (req, res) => {
   .catch(err => {
     res.status(500).json({message: "There was an error getting the user from the server."})
   })
-
-  
 });
 
 //custom middleware
