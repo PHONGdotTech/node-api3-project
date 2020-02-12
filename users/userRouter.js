@@ -63,7 +63,7 @@ router.get('/:id/posts', (req, res) => {
   .then(user => {
     !user ? res.status(404).json({message: "No such user exists."}) :
     (
-      Posts.getById(req.params.id)
+      Users.getUserPosts(req.params.id)
       .then(posts => {
         res.status(200).json(posts)
       })
@@ -107,7 +107,7 @@ router.put('/:id', (req, res) => {
   .then(user => {
     !user ? res.status(404).json({message: "No such user exists."}) :
     (
-      Users.update(req.params.id)
+      Users.update(req.params.id, req.body)
       .then(updatedCount => {
         res.status(200).json({message: `Successfully updated ${updatedCount} user.`})
       })
