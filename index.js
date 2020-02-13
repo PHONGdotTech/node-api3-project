@@ -8,6 +8,10 @@ const server = express();
 server.use(express.json());
 server.use("/api/users", logger, userRouter)
 
+server.get("/", (req, res)=>{
+    res.status(200).json({message: process.env.ENV_MSG || "no ENV_MSG was found"})
+})
+
 const port = process.env.PORT || 5000
 server.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
