@@ -2,11 +2,13 @@
 require("dotenv").config();
 const express = require("express");
 const userRouter = require("./users/userRouter.js");
+const postRouter = require("./posts/postRouter.js");
 
 const server = express();
 
 server.use(express.json());
 server.use("/api/users", logger, userRouter)
+server.use("/api/posts", logger, postRouter)
 
 server.get("/", (req, res)=>{
     res.status(200).json({message: process.env.ENV_MSG || "no ENV_MSG was found"})
