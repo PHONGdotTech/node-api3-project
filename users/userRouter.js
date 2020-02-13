@@ -68,7 +68,11 @@ router.put('/:id', validateUserId, (req, res) => {
   // do your magic!
   Users.update(req.params.id, req.body)
   .then(updatedCount => {
-    res.status(200).json({message: `Successfully updated ${updatedCount} user.`})
+    res.status(200).json({
+      message: `Successfully updated ${updatedCount} user.`,
+      oldUser: req.user,
+      updatedUser: {id: parseInt(req.params.id),...req.body}
+    })
   })
   .catch(err => {
     res.status(500).json({message: "There was an error updating that user to the server."})
