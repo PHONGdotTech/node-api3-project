@@ -7,6 +7,10 @@ const postRouter = require("./posts/postRouter.js");
 const server = express();
 
 server.use(express.json());
+server.use((req, res, next) =>{
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+})
 server.use("/api/users", logger, userRouter)
 server.use("/api/posts", logger, postRouter)
 
